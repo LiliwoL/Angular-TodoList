@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToDo } from 'src/app/model/todo.model';
+import { ReglesService } from 'src/app/services/regles.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -19,11 +20,23 @@ export class TodoItemComponent implements OnInit {
      dateCreation: new Date()
     };
 
-  // Attributs contenant des classes possibles
+  // Attributs
+  //verification : boolean = false;
 
-  constructor() { }
+  // A la construction, on injecte la dépendance du service ReglesServices
+  constructor(
+    private verifService : ReglesService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  // Methode appelée par la directive ngClass
+  verification( todo: ToDo ) : boolean {
+
+    // Faire appel au service pour vérifier son contenu
+    // On va remplir l'attribut verification
+    return this.verifService.VerificationTodo( todo.contenu );
+
   }
 
 }

@@ -5,3 +5,9 @@
 .normal{
 	border: 1px solid green;
 }
+
+
+.verified{
+	color: green;
+	font-weight: bold;
+}
