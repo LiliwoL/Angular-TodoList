@@ -1,1 +1,9 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
+
+
+.urgent{
+	border: 2px solid red;
+}
+
+.normal{
+	border: 1px solid green;
+}

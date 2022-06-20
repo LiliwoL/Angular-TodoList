@@ -1,17 +1,23 @@
 <!-- Affichage de l'item reçu du composant parent -->
-<li [ngClass]="todo.checked ? 'urgent' : 'normal'">
+	<td>
+		{{ i }}
+	</td>
 
-	<a [href]='"https://www.google.fr/search?q=" + todo?.contenu'>
-		{{ i }} - {{ todo.contenu }} - {{ todo.dateCreation | date:'Y' | uppercase }}
+	<td>
+		<a [href]='"https://www.google.fr/search?q=" + todo?.contenu'>
+			{{ todo.contenu }}
+		</a>
+	</td>
 
-		<!--
-			{{ todo.dateCreation | date: 'hh:mm:ss'}}
-		-->
-	</a>
+	<td>
+		{{ todo.dateCreation | date:'Y' | uppercase }}
+		{{ todo.dateCreation | date: 'hh:mm:ss'}}
+	</td>
 
+	<td>
+		<span [ngClass]="verification(todo) ? 'verified' : 'notVerified' "></span>
+	</td>
 
-	<span [ngClass]="verification(todo) ? 'verified' : '' ">
-		Vérification
-	</span>
-
-</li>
+	<td>
+		<button class="btn btn-warning" (click)="deleteTodo()">Supprimer</button>
+	</td>

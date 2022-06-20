@@ -1,0 +1,16 @@
+
+{# <li [ngClass]="todo.checked ? 'urgent' : 'normal'">
+
+	<a [href]='"https://www.google.fr/search?q=" + todo?.contenu'>
+		{{ i }} - {{ todo.contenu }} - {{ todo.dateCreation | date:'Y' | uppercase }}
+
+		<!--
+			{{ todo.dateCreation | date: 'hh:mm:ss'}}
+		-->
+	</a>
+
+
+	<span [ngClass]="verification(todo) ? 'verified' : '' ">
+		Vérification
+	</span>
+</li> #}

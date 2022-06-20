@@ -1,0 +1,11 @@
+{# <ul [hidden]="todoList.length == 0">
+
+				<!-- Appel au composant enfant todo-item -->
+				<app-todo-item
+					*ngFor="let todo of todoList; let i = index;"
+					[i]="i"
+					[todo]="todo"
+					>
+				</app-todo-item>
+
+			</ul> #}

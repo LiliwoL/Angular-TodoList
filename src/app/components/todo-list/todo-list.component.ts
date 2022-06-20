@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToDo } from 'src/app/model/todo.model';
+import { ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-todo-list',
@@ -49,5 +50,27 @@ export class TodoListComponent implements OnInit {
       this.todoEnCours = '';
       this.todoEnCoursUrgence = false;
     }
+  }
+
+  deleteInTodoList( todoToDelete : ToDo ) {
+
+    console.log("Event reçu pour " + todoToDelete.contenu);
+
+    // Recherche du todo reçu dans le tableau todoList
+    let index = this.todoList.findIndex(
+      t => {
+        return t == todoToDelete
+      }
+    );
+
+    // Si on trouve la référence
+    if (index != -1){
+      // Suppression du tableau
+      this.todoList.splice( index, 1);
+    }
+    else {
+      throw new Error("Le Todo n'a pas été trouvé");
+    }
+
   }
 }

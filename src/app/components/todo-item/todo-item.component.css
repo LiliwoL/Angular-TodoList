@@ -1,13 +1,15 @@
-.urgent{
-	border: 2px solid red;
-}
-
-.normal{
-	border: 1px solid green;
-}
-
-
 .verified{
 	color: green;
 	font-weight: bold;
+}
+.verified::after{
+	content: "✔";
+}
+
+.notVerified{
+	color: red;
+	font-weight: bold;
+}
+.notVerified::after{
+	content:  "✖";
 }
