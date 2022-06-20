@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToDo } from 'src/app/model/todo.model';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class TodoListComponent implements OnInit {
 
   // Attribut tableau des Todos
-  todoList : Array<string> = [];
+  todoList : Array<ToDo> = [];
 
   // Attribut Todo en cours
   todoEnCours : string = '';
+  // Attribut Todo en cours checked?
+  todoEnCoursUrgence : boolean = false;
+
+  // ******************
 
   constructor() { }
 
@@ -25,9 +30,18 @@ export class TodoListComponent implements OnInit {
     // Récupérer le contenu de la Todo en cours de rédaction
     // Ajouter au tableau todoList
     if ( this.todoEnCours != '' ){
-      this.todoList.push( this.todoEnCours );
 
+      this.todoList.push(
+        {
+          checked: this.todoEnCoursUrgence,
+          contenu: this.todoEnCours,
+          dateCreation: new Date()
+        }
+      );
+
+      // Réinitialisation des valeurs
       this.todoEnCours = '';
+      this.todoEnCoursUrgence = false;
     }
   }
 }

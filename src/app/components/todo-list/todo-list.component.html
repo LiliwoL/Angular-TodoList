@@ -4,6 +4,9 @@
 	<input type="text"
 			[(ngModel)]="todoEnCours"
 		/>
+	<input type="checkbox"
+		[(ngModel)]="todoEnCoursUrgence"
+	/>
 
 	<form (submit)="onSubmit()">
 		<input type="submit" value="Ajouter cette Todo"/>
@@ -15,9 +18,12 @@
 
 	<ul [hidden]="todoList.length == 0">
 
-		<li *ngFor="let todo of todoList; let i = index;">
-			{{ i }} - {{ todo }}
-		</li>
+		<!-- Appel au composant enfant todo-item -->
+		<app-todo-item
+			*ngFor="let todo of todoList; let i = index;"
+			[i]="i"
+			[todo]="todo"
+			></app-todo-item>
 
 	</ul>
 </div>
