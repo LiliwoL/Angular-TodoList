@@ -1,10 +1,10 @@
 <!-- Affichage de l'item reçu du composant parent -->
-<li [ngClass]="classseAAppliquer">
+<li [ngClass]="todo.checked ? 'urgent' : 'normal'">
 
 	<a [href]='"https://www.google.fr/search?q=" + todo?.contenu'>
-		{{ i }} - {{ todo?.contenu }} - {{ todo?.dateCreation | date:'M/Y' | uppercase }}
+		{{ i }} - {{ todo.contenu }} - {{ todo.dateCreation | date:'M/Y' | uppercase }}
 
-		{{ todo?.dateCreation | date: 'hh:mm:ss'}}
+		{{ todo.dateCreation | date: 'hh:mm:ss'}}
 	</a>
 
 </li>

@@ -13,12 +13,13 @@ export class TodoItemComponent implements OnInit {
     i : number = 0;
 
   @Input()
-    todo : ToDo | undefined;
+    todo : ToDo = {
+     checked: false,
+     contenu: '',
+     dateCreation: new Date()
+    };
 
   // Attributs contenant des classes possibles
-  classseAAppliquer = {
-
-  };
 
   constructor() { }
 
