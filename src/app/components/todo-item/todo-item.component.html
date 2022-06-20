@@ -1,8 +1,10 @@
 <!-- Affichage de l'item reçu du composant parent -->
 <li [ngClass]="classseAAppliquer">
 
-	<a [href]='"https://www.google.fr/search?q=" + todo'>
-		{{ i }} - {{ todo }}
+	<a [href]='"https://www.google.fr/search?q=" + todo?.contenu'>
+		{{ i }} - {{ todo?.contenu }} - {{ todo?.dateCreation | date:'M/Y' | uppercase }}
+
+		{{ todo?.dateCreation | date: 'hh:mm:ss'}}
 	</a>
 
 </li>

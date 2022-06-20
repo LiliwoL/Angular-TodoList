@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ToDo } from 'src/app/model/todo.model';
 
 @Component({
   selector: 'app-todo-item',
@@ -12,20 +13,16 @@ export class TodoItemComponent implements OnInit {
     i : number = 0;
 
   @Input()
-    todo : string = '';
-
-  short = true;
+    todo : ToDo | undefined;
 
   // Attributs contenant des classes possibles
   classseAAppliquer = {
-    'short' : this.short,
-    'long' : !this.short
+
   };
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log ("Longueur:" + this.todo.length);
   }
 
 }
