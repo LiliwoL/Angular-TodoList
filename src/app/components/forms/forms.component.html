@@ -25,7 +25,10 @@
 
 			formControlName="password"
 
-			type="text"/>
+			type="password"/>
+	</div>
+	<div *ngIf="passwordInvalide()" class="alert alert-danger">
+		Le mot de passe est obligatoire
 	</div>
 
 	<button type="submit"
