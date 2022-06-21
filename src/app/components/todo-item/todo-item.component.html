@@ -12,9 +12,9 @@
 </td>
 
 <td>
-	<span [ngClass]="verification(todo) ? 'verified' : '' ">
-		Vérification
-	</span>
+	<span [ngClass]="verification(todo) ? 'verified' : 'notVerified' "></span>
 </td>
 
-<td></td>
+<td>
+	<button class="btn btn-warning" (click)="sendDeleteOrder()">Supprimer cette Todo</button>
+</td>

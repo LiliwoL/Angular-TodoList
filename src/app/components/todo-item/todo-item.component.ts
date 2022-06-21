@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToDo } from 'src/app/model/todo.model';
 import { ReglesService } from 'src/app/services/regles.service';
 
@@ -21,7 +21,8 @@ export class TodoItemComponent implements OnInit {
     };
 
   // Attributs
-  //verification : boolean = false;
+  @Output('suppressionDemande')
+    deleteTriggered: EventEmitter<ToDo> = new EventEmitter();
 
   // A la construction, on injecte la dépendance du service ReglesServices
   constructor(
@@ -36,7 +37,12 @@ export class TodoItemComponent implements OnInit {
     // Faire appel au service pour vérifier son contenu
     // On va remplir l'attribut verification
     return this.verifService.VerificationTodo( todo.contenu );
+  }
 
+  // Méthode appelée au clic du bouton de suppression
+  sendDeleteOrder() : void {
+    // Emettre un signal
+    this.deleteTriggered.emit( this.todo );
   }
 
 }

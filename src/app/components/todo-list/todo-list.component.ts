@@ -50,4 +50,29 @@ export class TodoListComponent implements OnInit {
       this.todoEnCoursUrgence = false;
     }
   }
+
+  /**
+   *
+   * @param todoToDelete Méthode qui va supprimler un Todo du tableau
+   */
+  deleteTodo ( todoToDelete : ToDo ) : void {
+
+    console.log("On souhaite supprimer " + todoToDelete.contenu);
+
+    // Recherche du todo reçu dans le tableau todoList
+    let index = this.todoList.findIndex(
+      indexTodoToDelete => {
+        return indexTodoToDelete == todoToDelete
+      }
+    );
+
+    if ( index != -1 ){
+      // Le Todo a été trouvé, on peut le supprilmer
+      this.todoList.splice(index, 1);
+
+      console.log(this.todoList.length);
+    }else{
+      throw new Error("Cette Todo n'a pas été trouvée");
+    }
+  }
 }
