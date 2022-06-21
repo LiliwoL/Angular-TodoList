@@ -10,6 +10,8 @@ import { ObservableComponent } from './components/observable/observable.componen
 import { FormsComponent } from './components/forms/forms.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './components/nav/nav.component';
+import { HomeComponent } from './components/home/home.component';
+import { PipesComponent } from './components/pipes/pipes.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { NavComponent } from './components/nav/nav.component';
     ExponentialPipe,
     ObservableComponent,
     FormsComponent,
-    NavComponent
+    NavComponent,
+    HomeComponent,
+    PipesComponent
   ],
   imports: [
     BrowserModule,

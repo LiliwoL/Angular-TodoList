@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 import { ObservableComponent } from './components/observable/observable.component';
+import { PipesComponent } from './components/pipes/pipes.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 const routes : Routes = [
@@ -13,8 +15,16 @@ const routes : Routes = [
     component: TodoListComponent
   },
   {
+    path: 'pipes',
+    component: PipesComponent
+  },
+  {
+    path: 'accueil',
+    component: HomeComponent
+  },
+  {
     path: '',
-    redirectTo: 'todoList',
+    redirectTo: 'accueil',
     pathMatch: 'full'
   }
 ];

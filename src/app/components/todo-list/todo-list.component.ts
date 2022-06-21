@@ -17,12 +17,6 @@ export class TodoListComponent implements OnInit {
   // Attribut Todo en cours checked?
   todoEnCoursUrgence : boolean = false;
 
-
-  // Test des pipes
-  valeurMonetaire: number = 1311123.65;
-
-  valeurPourcentage: number = 0.43;
-
    // Attributs
   // ******************
 
