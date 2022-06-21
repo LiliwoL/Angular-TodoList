@@ -1,17 +1,20 @@
 <!-- Affichage de l'item reçu du composant parent -->
-<li [ngClass]="todo.checked ? 'urgent' : 'normal'">
+<td>{{ i }}</td>
 
+<td>
 	<a [href]='"https://www.google.fr/search?q=" + todo?.contenu'>
-		{{ i }} - {{ todo.contenu }} - {{ todo.dateCreation | date:'Y' | uppercase }}
-
-		<!--
-			{{ todo.dateCreation | date: 'hh:mm:ss'}}
-		-->
+		{{ todo.contenu }}
 	</a>
+</td>
 
+<td>
+	{{ todo.dateCreation | date:'Y' | uppercase }}
+</td>
 
+<td>
 	<span [ngClass]="verification(todo) ? 'verified' : '' ">
 		Vérification
 	</span>
+</td>
 
-</li>
+<td></td>

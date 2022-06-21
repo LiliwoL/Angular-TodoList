@@ -3,7 +3,7 @@ import { ToDo } from 'src/app/model/todo.model';
 import { ReglesService } from 'src/app/services/regles.service';
 
 @Component({
-  selector: 'app-todo-item',
+  selector: '[app-todo-item]',
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.css']
 })
