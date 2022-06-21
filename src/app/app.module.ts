@@ -8,6 +8,8 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { ExponentialPipe } from './pipes/exponential.pipe';
 import { ObservableComponent } from './components/observable/observable.component';
 import { FormsComponent } from './components/forms/forms.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { FormsComponent } from './components/forms/forms.component';
     TodoItemComponent,
     ExponentialPipe,
     ObservableComponent,
-    FormsComponent
+    FormsComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
