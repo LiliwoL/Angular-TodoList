@@ -87,6 +87,10 @@ export class PipesComponent implements OnInit {
     }];
   }
 
+  get factice() {
+    return "test";
+  }
+
 
   get data() {
 
@@ -94,7 +98,9 @@ export class PipesComponent implements OnInit {
     let paramInt = parseInt( "" + this.parametreRecu );
 
     // Utilisation du parametre reçu
-    if ( paramInt > 0 && paramInt < 11){
+    if ( paramInt >= 0 && paramInt < 11){
+
+      // Extraire le produit
       let product = this._products[ paramInt ];
 
       return { "nom": product.name, "categorie": product.category };
