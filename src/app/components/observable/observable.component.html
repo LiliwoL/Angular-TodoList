@@ -1,0 +1,19 @@
+<ul>
+	<li *ngFor="let val of value">
+		{{ val }}
+	</li>
+</ul>
+
+<button class="btn btn-info" (click)="init()">Lancer l'observable et y souscrire</button>
+
+<hr>
+
+<ul>
+	<li *ngFor="let val of value2">
+		{{ val }}
+	</li>
+</ul>
+
+<button class="btn btn-warning" (click)="deuxiemeObserver()">Deuxième Observer</button>
+
+<button class="btn btn-error" (click)="unsubscribe()">Désinscription</button>

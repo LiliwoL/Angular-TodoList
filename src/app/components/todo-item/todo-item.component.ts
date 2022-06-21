@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ToDo } from 'src/app/model/todo.model';
 import { ReglesService } from 'src/app/services/regles.service';
 
@@ -7,7 +7,7 @@ import { ReglesService } from 'src/app/services/regles.service';
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.css']
 })
-export class TodoItemComponent implements OnInit {
+export class TodoItemComponent implements OnInit, OnDestroy {
 
   // Attributs RECUS depuis le parent
   @Input()
@@ -29,7 +29,13 @@ export class TodoItemComponent implements OnInit {
     private verifService : ReglesService
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("Composant Todo-Item créé");
+  }
+
+  ngOnDestroy(): void {
+   console.log("Composant détruit");
+  }
 
   // Methode appelée par la directive ngClass
   verification( todo: ToDo ) : boolean {

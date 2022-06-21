@@ -1,0 +1,19 @@
+<form [formGroup]="angularForm">
+
+	<div class="form-group">
+		<label class="center-block">Nom:</label>
+
+		<input [ngClass]="{'form-control': true,
+			'is-invalid': nomInvalide()}"
+			formControlName="nom"
+			type="text"/>
+	</div>
+	<div *ngIf="nomInvalide()" class="alert alert-danger">
+		Le nom est obligatoire
+	</div>
+
+	<button type="submit"
+		class="btn-success" [disabled]="problemeValidation()">
+		Enregistrer
+	</button>
+</form>
