@@ -13,7 +13,6 @@ export class PipesComponent implements OnInit {
    valeurPourcentage: number = 0.43;
    parametreRecu: string | null = null;
 
-
   // Attribut Private
   private _products : Array<{
     id: number,
@@ -86,6 +85,22 @@ export class PipesComponent implements OnInit {
       "name": "Beaufort",
       "category": "Hudless"
     }];
+  }
+
+
+  get data() {
+
+    // Entier
+    let paramInt = parseInt( "" + this.parametreRecu );
+
+    // Utilisation du parametre reçu
+    if ( paramInt > 0 && paramInt < 11){
+      let product = this._products[ paramInt ];
+
+      return { "nom": product.name, "categorie": product.category };
+    }else{
+      return "";
+    }
   }
 
 }
