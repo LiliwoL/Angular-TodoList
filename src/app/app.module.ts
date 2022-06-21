@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { PipesComponent } from './components/pipes/pipes.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PipesComponent } from './components/pipes/pipes.component';
     FormsComponent,
     NavComponent,
     HomeComponent,
-    PipesComponent
+    PipesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsComponent } from './components/forms/forms.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 import { ObservableComponent } from './components/observable/observable.component';
 import { PipesComponent } from './components/pipes/pipes.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes : Routes = [
   {
@@ -14,7 +16,8 @@ const routes : Routes = [
 
   {
     path: 'todoList',
-    component: TodoListComponent
+    component: TodoListComponent,
+    canActivate: [AuthGuard]
   },
 
   {
@@ -37,6 +40,12 @@ const routes : Routes = [
     path: 'accueil',
     component: HomeComponent
   },
+
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+
   {
     path: '',
     redirectTo: 'accueil',
@@ -46,6 +55,7 @@ const routes : Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

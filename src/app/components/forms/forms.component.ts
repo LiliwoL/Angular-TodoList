@@ -66,6 +66,4 @@ export class FormsComponent implements OnInit {
   public problemeValidation(): boolean {
     return this.angularForm.pristine || this.angularForm.invalid;
   }
-
-
 }

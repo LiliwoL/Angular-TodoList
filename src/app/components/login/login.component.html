@@ -1,0 +1,44 @@
+
+<button class="btn btn-warning" (click)="logout()" *ngIf="isConnected()">
+	Logout
+</button>
+
+
+<form [formGroup]="loginForm" (submit)="login()" *ngIf="!isConnected()">
+
+	<div class="form-group">
+		<label class="center-block">Email:</label>
+
+		<input
+			[ngClass]="{'form-control': true,
+			'is-invalid': emailInvalide()}"
+
+			formControlName="email"
+
+			type="text"/>
+	</div>
+
+	<div *ngIf="emailInvalide()" class="alert alert-danger">
+		L'email est obligatoire
+	</div>
+
+	<div class="form-group">
+		<label class="center-block">Password:</label>
+
+		<input
+			[ngClass]="{'form-control': true,
+			'is-invalid': passwordInvalide()}"
+
+			formControlName="password"
+
+			type="password"/>
+	</div>
+	<div *ngIf="passwordInvalide()" class="alert alert-danger">
+		Le mot de passe est obligatoire
+	</div>
+
+	<button type="submit"
+		class="btn-success" [disabled]="problemeValidation()">
+		Connexion
+	</button>
+</form>
