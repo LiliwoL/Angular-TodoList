@@ -66,6 +66,8 @@ export class TodoListComponent implements OnInit {
       }
     );
 
+    debugger;
+
     if ( index != -1 ){
       // Le Todo a été trouvé, on peut le supprilmer
       this.todoList.splice(index, 1);
