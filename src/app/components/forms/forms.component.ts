@@ -36,6 +36,12 @@ export class FormsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   *  Le nom est invalide si:
+   *    invalide (vide ou inférieur à 3)
+   *    jamais modifié
+   *    jamais touché
+   * */
   public nomInvalide(): boolean {
     return this.angularForm.controls['nom'].invalid &&
      ( this.angularForm.controls['nom'].dirty || this.angularForm.controls['nom'].touched);
