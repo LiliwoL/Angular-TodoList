@@ -16,6 +16,18 @@
 		Le nom est obligatoire
 	</div>
 
+	<div class="form-group">
+		<label class="center-block">Password:</label>
+
+		<input
+			[ngClass]="{'form-control': true,
+			'is-invalid': passwordInvalide()}"
+
+			formControlName="password"
+
+			type="text"/>
+	</div>
+
 	<button type="submit"
 		class="btn-success" [disabled]="problemeValidation()">
 		Enregistrer

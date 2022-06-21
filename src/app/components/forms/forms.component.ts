@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { PasswordValidator } from 'src/app/password-validator';
 
 @Component({
   selector: 'app-forms',
@@ -27,6 +28,14 @@ export class FormsComponent implements OnInit {
             Validators.required,
             Validators.minLength(3)
           ]
+        ],
+
+        password: [
+          '',
+          [
+            // Validateur perso
+            PasswordValidator.containsKeyword
+          ]
         ]
       }
     );
@@ -45,6 +54,13 @@ export class FormsComponent implements OnInit {
   public nomInvalide(): boolean {
     return this.angularForm.controls['nom'].invalid &&
      ( this.angularForm.controls['nom'].dirty || this.angularForm.controls['nom'].touched);
+  }
+
+
+  public passwordInvalide(): boolean {
+    console.log( this.angularForm.controls['password'].invalid);
+
+    return this.angularForm.controls['password'].invalid;
   }
 
   public problemeValidation(): boolean {
