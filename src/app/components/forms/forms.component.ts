@@ -8,21 +8,32 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class FormsComponent implements OnInit {
 
+  // Attribut Formulaire qui doit être inialisé avec un formulaire vide
   angularForm: FormGroup = new FormGroup({
     nom: new FormControl('')
   });
 
-  constructor(private formBuilder: FormBuilder) {
-   this.creerFormulaire();
+  // Injection du formbuilder
+  constructor ( private formBuilder: FormBuilder ) {
+
+    // A la création je crée un formulaire avec les contrôles choisis ET les validators voulus
+    this.angularForm = this.formBuilder.group(
+      {
+        // contrôle pour nom
+        nom: [
+          '',
+          // Validators spécifique pour CE contrôle
+          [
+            Validators.required,
+            Validators.minLength(3)
+          ]
+        ]
+      }
+    );
+
   }
 
   ngOnInit(): void {
-  }
-
-  private creerFormulaire() {
-    this.angularForm = this.formBuilder.group({
-      nom: ['', Validators.required]
-    });
   }
 
   public nomInvalide(): boolean {

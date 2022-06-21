@@ -3,11 +3,15 @@
 	<div class="form-group">
 		<label class="center-block">Nom:</label>
 
-		<input [ngClass]="{'form-control': true,
+		<input
+			[ngClass]="{'form-control': true,
 			'is-invalid': nomInvalide()}"
+
 			formControlName="nom"
+
 			type="text"/>
 	</div>
+
 	<div *ngIf="nomInvalide()" class="alert alert-danger">
 		Le nom est obligatoire
 	</div>
