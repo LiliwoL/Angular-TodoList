@@ -57,6 +57,9 @@
 				<tbody>
 					<!-- Appel au composant enfant todo-item -->
 					<tr app-todo-item
+
+						#composantEnfant
+
 						*ngFor="let todo of todoList; let i = index;"
 						[ngClass]="todo.checked ? 'urgent' : 'normal'"
 
@@ -73,6 +76,8 @@
 	</div>
 </div>
 
+
+<button class="btn btn-error" (click)="composantEnfant.methodChildren()">Appel de la méthode enfant</button>
 
 
 <hr>

@@ -45,4 +45,8 @@ export class TodoItemComponent implements OnInit {
     this.deleteTriggered.emit( this.todo );
   }
 
+  methodChildren() : void {
+    console.log("Méthode de l'enfant");
+  }
+
 }

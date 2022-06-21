@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ToDo } from 'src/app/model/todo.model';
+import { TodoItemComponent } from '../todo-item/todo-item.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -22,7 +23,12 @@ export class TodoListComponent implements OnInit {
 
   valeurPourcentage: number = 0.43;
 
+   // Attributs
   // ******************
+
+  // Référence à un composant enfant
+  @ViewChild( 'composantEnfant' )
+    'composantEnfant' : TodoItemComponent;
 
   constructor() { }
 
@@ -65,8 +71,6 @@ export class TodoListComponent implements OnInit {
         return indexTodoToDelete == todoToDelete
       }
     );
-
-    debugger;
 
     if ( index != -1 ){
       // Le Todo a été trouvé, on peut le supprilmer
