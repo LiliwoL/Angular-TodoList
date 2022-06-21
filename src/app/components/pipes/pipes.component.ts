@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-pipes',
@@ -11,7 +11,8 @@ export class PipesComponent implements OnInit {
    // Test des pipes
    valeurMonetaire: number = 1311123.65;
    valeurPourcentage: number = 0.43;
-   parametreRecu: string | null = null;
+
+   parametreRecu: string = '';
 
   // Attribut Private
   private _products : Array<{
@@ -26,8 +27,6 @@ export class PipesComponent implements OnInit {
 
   // Injection du router
   constructor(
-    private _router: Router,
-
     private _activatedRoute: ActivatedRoute
   ) { }
 
@@ -35,15 +34,14 @@ export class PipesComponent implements OnInit {
     //console.debug( this._router.config );
 
     // Récupération du paramètre
-    console.log ( this._activatedRoute );
+    // Subscribe pour récupérer les paramètres
+    this._activatedRoute.paramMap.subscribe(params => {
 
-    if ( this._activatedRoute.snapshot.paramMap.get('parametre') !== null ){
-      this.parametreRecu = this._activatedRoute.snapshot.paramMap.get('parametre');
-    }else{
-      this.parametreRecu = "";
-    }
+      // Prévision en cas de null
+      this.parametreRecu = params.get('parametre') || "";
+    });
 
-    // Remplissage de l'attribut Product
+    // Remplissage de l'attribut Product avec des données fictives
     this._products = [{
       "id": 1,
       "name": "Rafaela",
@@ -91,11 +89,10 @@ export class PipesComponent implements OnInit {
     return "test";
   }
 
-
   get data() {
 
-    // Entier
-    let paramInt = parseInt( "" + this.parametreRecu );
+    // conversion du parametre reçu en Entier
+    let paramInt = parseInt( this.parametreRecu );
 
     // Utilisation du parametre reçu
     if ( paramInt >= 0 && paramInt < 11){
