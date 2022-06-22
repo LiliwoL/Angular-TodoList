@@ -50,12 +50,12 @@ export class QueryComponent implements OnInit {
       (response : any) => {
 
         // Recupération en string de la réponse
+        // On récupère directement le tableau results
         this.movieList = response.results;
       },
 
       (error : any) => {
-        console.error ("Une erreur est apparue");
-        console.error (error);
+       console.log("Error");
       },
 
       // Complete
@@ -63,6 +63,31 @@ export class QueryComponent implements OnInit {
         console.log( "Terminé ");
       }
     );
+
+    /*
+    .subscribe(
+      // Success
+      (response) => {
+        //console.log("Success");
+        console.table(response);
+
+        // Recupération en string de la réponse
+        this.APIresponse = response.toString();
+        return this.APIresponse;
+      },
+
+      (error) => {
+        console.error ("Une erreur est apparue");
+        console.error (error);
+      },
+
+      // Complete
+      () => {
+        console.log( "Terminé ");
+        return this.APIresponse;
+      }
+    );
+    */
 
   }
 

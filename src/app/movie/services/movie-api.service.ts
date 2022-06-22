@@ -32,5 +32,28 @@ export class MovieApiService {
     return this.httpClient.get<any>(
       url
     );
+
+
+
+    /*
+      this.APIresponse = this.httpClient.get<any>(url)
+    .subscribe({
+      next(response) {
+        //console.log("Success");
+        console.table(response);
+      },
+      error(error) {
+        //console.error ("Une erreur est apparue");
+        console.error (error);
+        return null;
+      },
+      complete() {
+        console.log( "Terminé ");
+      }
+    });
+
+    this.APIresponse.unsubscribe();
+*/
+
   }
 }

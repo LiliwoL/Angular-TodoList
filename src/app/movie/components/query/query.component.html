@@ -5,6 +5,6 @@ Terme recherché: {{ parametreRecu }}
 
 <ul>
 	<li *ngFor="let movie of movieList">
-		{{ movie.title}}
+		{{ movie.title}} - {{ movie.release_date | date:'Y' }}
 	</li>
 </ul>
