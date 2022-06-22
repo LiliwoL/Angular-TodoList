@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
    // Injection du formbuilder
    constructor (
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router : Router
    ) {
     // A la création je crée un formulaire avec les contrôles choisis ET les validators voulus
     this.loginForm = this.formBuilder.group(
@@ -75,7 +77,16 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.controls['password'].value;
 
     // On fournit ces valeurs au service d'auth
-    //this.authService.login( login, password );
+    this.authService.login( login, password ).subscribe(
+      {
+        next : (response : any) => {
+          console.log("Connexion OK");
+
+          // Redirection
+          this.router.navigate( ['/'] );
+        }
+      }
+    );
   }
 
 }
