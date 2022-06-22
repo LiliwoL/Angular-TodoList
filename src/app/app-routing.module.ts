@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsComponent } from './components/forms/forms.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 import { ObservableComponent } from './components/observable/observable.component';
 import { PipesComponent } from './components/pipes/pipes.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes : Routes = [
   {
@@ -14,7 +16,15 @@ const routes : Routes = [
 
   {
     path: 'todoList',
-    component: TodoListComponent
+    component: TodoListComponent,
+
+    // Sur cette route, on va vérifier le droit d'activation en demandant à AuthGuard
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'login',
+    component: LoginComponent
   },
 
   {
