@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from "@angular/common/http";
 
 import { MovieRoutingModule } from './movie-routing.module';
 import { MovieComponent } from './movie.component';
@@ -17,7 +18,8 @@ import { QueryComponent } from './components/query/query.component';
   imports: [
     CommonModule,
     MovieRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class MovieModule {
