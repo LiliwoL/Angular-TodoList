@@ -1,19 +1,36 @@
-<form [formGroup]="searchForm">
+<div class="container">
+	<h1>Recherche de film</h1>
 
-	<div class="form-group">
-		<label class="center-block">Votre recherche:</label>
+	<hr>
 
-		<input
-			[ngClass]="{'form-control': true,
-			'is-invalid': queryInvalide()}"
+	<div class="row">
+		<div class="col">
 
-			formControlName="query"
+			<form [formGroup]="searchForm">
 
-			type="text"/>
+				<div class="form-group">
+					<label class="center-block">Votre recherche:</label>
+
+					<input
+						[ngClass]="{'form-control': true,
+						'is-invalid': queryInvalide()}"
+
+						formControlName="query"
+
+						type="text"/>
+				</div>
+
+				<div *ngIf="queryInvalide()" class="alert alert-danger">
+					Le terme de recherche ne convient pas!
+				</div>
+
+				<button type="submit"
+					class="btn-success" [disabled]="queryInvalide()">
+					Rechercher
+				</button>
+
+			</form>
+		</div>
+
 	</div>
-
-	<div *ngIf="queryInvalide()" class="alert alert-danger">
-		Le terme de recherche ne convient pas!
-	</div>
-
-</form>
+</div>
