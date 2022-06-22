@@ -80,12 +80,17 @@ export class LoginComponent implements OnInit {
     this.authService.login( login, password ).subscribe(
       {
         next : (response : any) => {
-          console.log("Connexion OK");
+          console.log("Statut de réponse: " + response.status );
 
-          // Redirection
-          this.router.navigate( ['/'] );
-        },
-        error : (error : any) => console.log(error)
+          if ( response.status == 200 ){
+            console.log('OK');
+          } else {
+            console.error('NOK');
+          }
+
+           // Redirection
+           this.router.navigate( ['/'] );
+        }
       }
     );
   }

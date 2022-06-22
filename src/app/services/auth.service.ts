@@ -21,7 +21,7 @@ export class AuthService {
     console.log("Login in AuthService");
 
     // Vérification des  credentials
-    if ( login === this.fakeLogin && password === this.fakePassword )
+    if ( login == this.fakeLogin && password == this.fakePassword )
     {
 
       // Si tout est ok on ajoute dans le LocalStorage
