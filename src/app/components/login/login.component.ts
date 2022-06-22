@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,10 @@ export class LoginComponent implements OnInit {
   });
 
    // Injection du formbuilder
-   constructor ( private formBuilder: FormBuilder ) {
+   constructor (
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+   ) {
     // A la création je crée un formulaire avec les contrôles choisis ET les validators voulus
     this.loginForm = this.formBuilder.group(
       {
@@ -61,6 +65,17 @@ export class LoginComponent implements OnInit {
   }
 
   public problemeValidation(): boolean {
-  return this.loginForm.pristine || this.loginForm.invalid; }
+    return this.loginForm.pristine || this.loginForm.invalid;
+  }
+
+  // Méthode appelée à la validation du formulaire
+  submit() {
+    // Récupération des valeurs passées
+    let login = this.loginForm.controls['login'].value;
+    let password = this.loginForm.controls['password'].value;
+
+    // On fournit ces valeurs au service d'auth
+    //this.authService.login( login, password );
+  }
 
 }
