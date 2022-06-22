@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { LoginComponent } from '../components/login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,22 @@ export class AuthService {
 
   constructor() { }
 
+  /**
+   *
+   * @returns
+   */
   isConnected() : boolean {
+
+    // Vérification du LocalStorage
+    if ( localStorage.getItem('ANGULAR_AUTH') == 'vous etes autorisé' ){
+      return true;
+    }
+
     return false;
+
   }
+
+
 
   login ( login: string, password : string ) : Observable<any> {
 
