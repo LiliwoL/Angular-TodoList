@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col">
 
-			<form [formGroup]="searchForm">
+			<form [formGroup]="searchForm" (submit)="onSubmit()">
 
 				<div class="form-group">
 					<label class="center-block">Votre recherche:</label>

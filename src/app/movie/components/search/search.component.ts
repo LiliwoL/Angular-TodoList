@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -15,8 +16,11 @@ export class SearchComponent implements OnInit {
     }
   );
 
-  // injection de la dépendance FormBuilder
-  constructor( private formBuilder : FormBuilder) {
+  // injection de la dépendance FormBuilder et Router
+  constructor(
+    private formBuilder : FormBuilder,
+    private router : Router
+  ) {
 
     // Construction du formulaire de recherche
     this.searchForm = this.formBuilder.group(
@@ -41,6 +45,22 @@ export class SearchComponent implements OnInit {
   queryInvalide() : boolean {
     // Renvoi l'état d'invalidité du contrôle query
     return this.searchForm.controls['query'].invalid;
+  }
+
+  // Méthode lancée à la soumission du formulaire
+  onSubmit() : void {
+
+    // Récupération de la valeur du contrôle
+    let term = this.searchForm.controls['query'].value;
+
+    console.log("Terme " + term);
+
+    // Opérer une modification sur le term pour le sanitize
+
+    // Gérérer la redirection vers la route /movie/search/terme
+    this.router.navigate(
+      [ '/movie/search', term ]
+    );
   }
 
 }
