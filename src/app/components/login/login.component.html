@@ -5,7 +5,11 @@
 
 	<div class="row">
 		<div class="col">
-			<form [formGroup]="loginForm" (submit)="login()">
+			<button class="btn btn-warning" (click)="logout()" *ngIf="isConnected()">
+				Logout
+			</button>
+
+			<form [formGroup]="loginForm" (submit)="login()"  *ngIf="!isConnected()">
 
 				<div class="form-group">
 					<label class="center-block">Login:</label>

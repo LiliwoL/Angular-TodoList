@@ -14,8 +14,9 @@ export class AuthService {
   constructor() { }
 
   /**
+   * Méthode indiquant si l'on est connecté en vérifiant le contenu du LocalStorage
    *
-   * @returns
+   * @returns boolean
    */
   isConnected() : boolean {
 
@@ -52,4 +53,9 @@ export class AuthService {
     }
 
   }
+
+  logout(): void {
+    localStorage.removeItem("ANGULAR_AUTH");
+  }
+
 }

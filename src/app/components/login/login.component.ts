@@ -89,10 +89,22 @@ export class LoginComponent implements OnInit {
           }
 
            // Redirection
+           /**
+            * @TODO: Redirigé vers la page qui a appelé
+            */
            this.router.navigate( ['/'] );
         }
       }
     );
   }
+
+  logout() :void {
+    this.authService.logout();
+  }
+
+  isConnected() : boolean {
+    return this.authService.isConnected();
+  }
+
 
 }
