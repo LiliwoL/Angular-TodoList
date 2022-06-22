@@ -6,5 +6,8 @@ Terme recherché: {{ parametreRecu }}
 <ul>
 	<li *ngFor="let movie of movieList">
 		{{ movie.title}} - {{ movie.release_date | date:'Y' }}
+
+		<!-- Pour récupérer une image, https://developers.themoviedb.org/3/getting-started/images -->
+		<img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" />
 	</li>
 </ul>

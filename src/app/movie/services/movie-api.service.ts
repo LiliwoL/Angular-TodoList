@@ -23,37 +23,16 @@ export class MovieApiService {
   ) {}
 
   // Methode de requete sur une url externe
+  // Info sur le retour https://developers.themoviedb.org/3/search/search-movies
   query( term : string ) : Observable<any> {
 
     // Reconstruire l'url de recherche avec le terme
     let url = this.endPoint + "&query=" + term;
 
-    // Appel HTTP
+    // Appel HTTP qui va renvoyer un Observable<any>
     return this.httpClient.get<any>(
       url
     );
-
-
-
-    /*
-      this.APIresponse = this.httpClient.get<any>(url)
-    .subscribe({
-      next(response) {
-        //console.log("Success");
-        console.table(response);
-      },
-      error(error) {
-        //console.error ("Une erreur est apparue");
-        console.error (error);
-        return null;
-      },
-      complete() {
-        console.log( "Terminé ");
-      }
-    });
-
-    this.APIresponse.unsubscribe();
-*/
 
   }
 }
