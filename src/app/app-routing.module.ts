@@ -42,6 +42,13 @@ const routes : Routes = [
     path: '',
     redirectTo: 'accueil',
     pathMatch: 'full'
+  },
+
+  // Feature Module Movie
+  // Lazy Loading
+  {
+    path: 'movie',
+    loadChildren: () => import('./movie/movie.module').then(m => m.MovieModule)
   }
 ];
 
