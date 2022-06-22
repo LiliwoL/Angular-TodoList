@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group(
       {
         // contrôle pour nom
-        nom: [
+        login: [
           '',
           // Validators spécifique pour CE contrôle
           [
