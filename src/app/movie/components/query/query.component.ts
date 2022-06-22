@@ -1,6 +1,7 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, isDevMode, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MovieApiService } from '../../services/movie-api.service';
 
@@ -45,7 +46,9 @@ export class QueryComponent implements OnInit {
     // Appel au service API
     let retourApi : Observable<any> = this.movieAPIService.query( this.parametreRecu );
 
-    retourApi.subscribe(
+    /*
+     Deprecated
+     retourApi.subscribe(
       // Success
       (response : any) => {
 
@@ -62,34 +65,18 @@ export class QueryComponent implements OnInit {
       () => {
         console.log( "Terminé ");
       }
-    );
+    ); */
 
-    /*
-    .subscribe(
-      // Success
-      (response) => {
-        //console.log("Success");
-        console.table(response);
-
-        // Recupération en string de la réponse
-        this.APIresponse = response.toString();
-        return this.APIresponse;
-      },
-
-      (error) => {
-        console.error ("Une erreur est apparue");
-        console.error (error);
-      },
-
-      // Complete
-      () => {
-        console.log( "Terminé ");
-        return this.APIresponse;
-      }
-    );
-    */
-
+    // Création d'un observer
+    let observer : Observer<any> = {
+      next: (response : any) => this.movieList = response.results,
+      error: (err : any) => console.error('error: ' + err),
+      complete: () => console.log("Terminé")
+    };
+    retourApi.subscribe( observer );
   }
+
+
 
   get apiKey () {
 
