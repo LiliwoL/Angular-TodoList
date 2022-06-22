@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-query',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QueryComponent implements OnInit {
 
-  constructor() { }
+  // Atrributs
+  parametreRecu : string = '';
+
+  constructor( private activatedRoute : ActivatedRoute ) { }
 
   ngOnInit(): void {
+
+    // Récupération du paramètre
+    console.log (typeof this.activatedRoute.paramMap );
+
+    // ParamMap
+    this.activatedRoute.paramMap.subscribe(
+      params => {
+        this.parametreRecu = params.get('term') || '';
+      }
+    );
+
   }
 
 }

@@ -47,13 +47,14 @@ export class SearchComponent implements OnInit {
     return this.searchForm.controls['query'].invalid;
   }
 
+
   // Méthode lancée à la soumission du formulaire
   onSubmit() : void {
 
     // Récupération de la valeur du contrôle
     let term = this.searchForm.controls['query'].value;
 
-    console.log("Terme " + term);
+    console.log("Terme recherché: " + term);
 
     // Opérer une modification sur le term pour le sanitize
 
