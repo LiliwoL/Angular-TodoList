@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsComponent } from './components/forms/forms.component';
 import { HomeComponent } from './components/home/home.component';
 import { ObservableComponent } from './components/observable/observable.component';
 import { PipesComponent } from './components/pipes/pipes.component';
@@ -31,6 +32,12 @@ const routes : Routes = [
     path: 'accueil',
     component: HomeComponent
   },
+
+  {
+    path: 'form',
+    component: FormsComponent
+  },
+
   {
     path: '',
     redirectTo: 'accueil',
