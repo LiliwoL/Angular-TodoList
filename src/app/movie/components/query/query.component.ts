@@ -46,6 +46,7 @@ export class QueryComponent implements OnInit {
     // Appel au service API
     let retourApi : Observable<any> = this.movieAPIService.query( this.parametreRecu );
 
+    // Observateur
     retourApi.subscribe(
       {
         next: (response : any) => this.movieList = response.results,

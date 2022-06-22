@@ -1,35 +1,45 @@
-<form [formGroup]="angularForm">
+<div class="container">
+	<h1>Angular Form</h1>
 
-	<div class="form-group">
-		<label class="center-block">Nom:</label>
+	<hr>
 
-		<input
-			[ngClass]="{'form-control': true,
-			'is-invalid': nomInvalide()}"
+	<div class="row">
+		<div class="col">
+			<form [formGroup]="angularForm">
 
-			formControlName="nom"
+				<div class="form-group">
+					<label class="center-block">Nom:</label>
 
-			type="text"/>
+					<input
+						[ngClass]="{'form-control': true,
+						'is-invalid': nomInvalide()}"
+
+						formControlName="nom"
+
+						type="text"/>
+				</div>
+
+				<div *ngIf="nomInvalide()" class="alert alert-danger">
+					Le nom est obligatoire
+				</div>
+
+				<div class="form-group">
+					<label class="center-block">Password:</label>
+
+					<input
+						[ngClass]="{'form-control': true,
+						'is-invalid': passwordInvalide()}"
+
+						formControlName="password"
+
+						type="text"/>
+				</div>
+
+				<button type="submit"
+					class="btn-success" [disabled]="problemeValidation()">
+					Enregistrer
+				</button>
+			</form>
+		</div>
 	</div>
-
-	<div *ngIf="nomInvalide()" class="alert alert-danger">
-		Le nom est obligatoire
-	</div>
-
-	<div class="form-group">
-		<label class="center-block">Password:</label>
-
-		<input
-			[ngClass]="{'form-control': true,
-			'is-invalid': passwordInvalide()}"
-
-			formControlName="password"
-
-			type="text"/>
-	</div>
-
-	<button type="submit"
-		class="btn-success" [disabled]="problemeValidation()">
-		Enregistrer
-	</button>
-</form>
+</div>

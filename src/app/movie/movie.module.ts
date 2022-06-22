@@ -6,13 +6,15 @@ import { MovieComponent } from './movie.component';
 import { SearchComponent } from './components/search/search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QueryComponent } from './components/query/query.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 
 @NgModule({
   declarations: [
     MovieComponent,
     SearchComponent,
-    QueryComponent
+    QueryComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,

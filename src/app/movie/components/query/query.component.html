@@ -1,13 +1,26 @@
-Terme recherché: {{ parametreRecu }}
+<div class="container">
+	<h1>Angular search Movie</h1>
+
+	<hr>
+
+	<div class="row">
+		<div class="col">
+			Terme recherché: {{ parametreRecu }}
 
 
-{{ apiKey }}
+			{{ apiKey }}
 
-<ul>
-	<li *ngFor="let movie of movieList">
-		{{ movie.title}} - {{ movie.release_date | date:'Y' }}
+			<ul>
+				<li *ngFor="let movie of movieList">
+					{{ movie.title}} - {{ movie.release_date | date:'Y' }}
 
-		<!-- Pour récupérer une image, https://developers.themoviedb.org/3/getting-started/images -->
-		<img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" />
-	</li>
-</ul>
+					<!-- Pour récupérer une image, https://developers.themoviedb.org/3/getting-started/images -->
+					<img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" width="150" />
+
+					<a [routerLink]="['/movie/detail', movie.id]">Plus d'infos</a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+</div>
