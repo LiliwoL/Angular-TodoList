@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MovieRoutingModule } from './movie-routing.module';
 import { MovieComponent } from './movie.component';
 import { SearchComponent } from './components/search/search.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SearchComponent } from './components/search/search.component';
   ],
   imports: [
     CommonModule,
-    MovieRoutingModule
+    MovieRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class MovieModule {

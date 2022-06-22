@@ -1,1 +1,19 @@
-<p>search works!</p>
+<form [formGroup]="searchForm">
+
+	<div class="form-group">
+		<label class="center-block">Votre recherche:</label>
+
+		<input
+			[ngClass]="{'form-control': true,
+			'is-invalid': queryInvalide()}"
+
+			formControlName="query"
+
+			type="text"/>
+	</div>
+
+	<div *ngIf="queryInvalide()" class="alert alert-danger">
+		Le terme de recherche ne convient pas!
+	</div>
+
+</form>
