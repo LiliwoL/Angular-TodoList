@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
   }
 
   // Méthode appelée à la validation du formulaire
-  submit() {
+  login() {
     // Récupération des valeurs passées
     let login = this.loginForm.controls['login'].value;
     let password = this.loginForm.controls['password'].value;
