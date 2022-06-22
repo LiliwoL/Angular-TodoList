@@ -47,6 +47,16 @@ const routes : Routes = [
   },
 
   {
+    path: 'movies',
+    //component: MovieListComponent
+
+    // Avec ng g module movies -- route movies --module app.module
+    // Lazy Loading
+    // Le module ne sera chargé que si on l'appelle
+    loadChildren: () => import('./movies/movies.module').then( m => m.MoviesModule )
+  },
+
+  {
     path: '',
     redirectTo: 'accueil',
     pathMatch: 'full'
