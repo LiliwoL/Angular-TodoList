@@ -1,1 +1,45 @@
-<p>login works!</p>
+<div class="container">
+	<h1>Angular Login</h1>
+
+	<hr>
+
+	<div class="row">
+		<div class="col">
+			<form [formGroup]="loginForm" (submit)="(login)">
+
+				<div class="form-group">
+					<label class="center-block">Login:</label>
+
+					<input
+						[ngClass]="{'form-control': true,
+						'is-invalid': loginInvalide()}"
+
+						formControlName="login"
+
+						type="text"/>
+				</div>
+
+				<div *ngIf="loginInvalide()" class="alert alert-danger">
+					Le login est invalide
+				</div>
+
+				<div class="form-group">
+					<label class="center-block">Password:</label>
+
+					<input
+						[ngClass]="{'form-control': true,
+						'is-invalid': passwordInvalide()}"
+
+						formControlName="password"
+
+						type="text"/>
+				</div>
+
+				<button type="submit"
+					class="btn-success" [disabled]="problemeValidation()">
+					Se connecter
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
