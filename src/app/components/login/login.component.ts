@@ -84,7 +84,8 @@ export class LoginComponent implements OnInit {
 
           // Redirection
           this.router.navigate( ['/'] );
-        }
+        },
+        error : (error : any) => console.log(error)
       }
     );
   }

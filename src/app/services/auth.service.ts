@@ -18,8 +18,11 @@ export class AuthService {
 
   login ( login: string, password : string ) : Observable<any> {
 
+    console.log("Login in AuthService");
+
     // Vérification des  credentials
-    if ( login === this.fakeLogin && password === this.fakePassword ){
+    if ( login === this.fakeLogin && password === this.fakePassword )
+    {
 
       // Si tout est ok on ajoute dans le LocalStorage
       localStorage.setItem('ANGULAR_AUTH', 'vous etes autorisé');
