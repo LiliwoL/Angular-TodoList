@@ -46,34 +46,13 @@ export class QueryComponent implements OnInit {
     // Appel au service API
     let retourApi : Observable<any> = this.movieAPIService.query( this.parametreRecu );
 
-    /*
-     Deprecated
-     retourApi.subscribe(
-      // Success
-      (response : any) => {
-
-        // Recupération en string de la réponse
-        // On récupère directement le tableau results
-        this.movieList = response.results;
-      },
-
-      (error : any) => {
-       console.log("Error");
-      },
-
-      // Complete
-      () => {
-        console.log( "Terminé ");
+    retourApi.subscribe(
+      {
+        next: (response : any) => this.movieList = response.results,
+        error: (err : any) => console.error('error: ' + err),
+        complete: () => console.log("Terminé")
       }
-    ); */
-
-    // Création d'un observer
-    let observer : Observer<any> = {
-      next: (response : any) => this.movieList = response.results,
-      error: (err : any) => console.error('error: ' + err),
-      complete: () => console.log("Terminé")
-    };
-    retourApi.subscribe( observer );
+    );
   }
 
 
