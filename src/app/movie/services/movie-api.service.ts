@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,35 +15,22 @@ export class MovieApiService {
   // URL d'appel de l'API
   endPoint : string = "https://api.themoviedb.org/3/search/movie?api_key=" + this.apiKey + "&language=fr-FR&page=1&include_adult=false";
 
+  APIresponse : string = '';
+
   // Injection du HttpClient
   constructor(
     private httpClient : HttpClient
   ) {}
 
   // Methode de requete sur une url externe
-  query( term : string ) {
+  query( term : string ) : Observable<any> {
 
     // Reconstruire l'url de recherche avec le terme
     let url = this.endPoint + "&query=" + term;
 
     // Appel HTTP
-    this.httpClient.get(
+    return this.httpClient.get<any>(
       url
-    ).subscribe(
-      // Success
-      (response) => {
-        console.log("Success");
-        console.table(response);
-      },
-
-      (error) => {
-        console.error (error);
-      },
-
-      // Complete
-      () => {
-        console.log( "Terminé ");
-      }
-    )
+    );
   }
 }

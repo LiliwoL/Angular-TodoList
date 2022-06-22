@@ -2,3 +2,9 @@ Terme recherché: {{ parametreRecu }}
 
 
 {{ apiKey }}
+
+<ul>
+	<li *ngFor="let movie of movieList">
+		{{ movie.title}}
+	</li>
+</ul>

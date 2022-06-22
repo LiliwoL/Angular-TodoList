@@ -1,5 +1,6 @@
 import { Component, isDevMode, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MovieApiService } from '../../services/movie-api.service';
 
@@ -12,6 +13,8 @@ export class QueryComponent implements OnInit {
 
   // Attributs
   parametreRecu : string = '';
+
+  movieList : any;
 
   constructor(
     private activatedRoute : ActivatedRoute,
@@ -40,7 +43,26 @@ export class QueryComponent implements OnInit {
     );
 
     // Appel au service API
-    this.movieAPIService.query( this.parametreRecu );
+    let retourApi : Observable<any> = this.movieAPIService.query( this.parametreRecu );
+
+    retourApi.subscribe(
+      // Success
+      (response : any) => {
+
+        // Recupération en string de la réponse
+        this.movieList = response.results;
+      },
+
+      (error : any) => {
+        console.error ("Une erreur est apparue");
+        console.error (error);
+      },
+
+      // Complete
+      () => {
+        console.log( "Terminé ");
+      }
+    );
 
   }
 
